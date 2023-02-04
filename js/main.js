@@ -87,7 +87,6 @@ main.addEventListener("scroll", (e) => {
   let currentOffset = main.scrollTop % viewHeight;
 
   let opacityValue = Math.abs(1 - currentOffset / (viewHeight / 2));
-  console.log(opacityValue);
 
   title.style.opacity = opacityValue;
   paragraph.style.opacity = opacityValue;
