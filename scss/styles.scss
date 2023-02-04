@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+@import "settings";
+
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: $first-color;
+  z-index: $z-fixed;
+}
+.nav {
+  margin: 0.35rem 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $header-height;
+  font-size: var(--normal-font-size);
+  font-weight: 500;
+  .nav_logo {
+    display: flex;
+    align-items: center;
+    img {
+      width: 110px;
+    }
+  }
+
+  .nav_menu {
+    display: none;
+  }
+  .nav_toggle {
+    display: flex;
+  }
+  .nav_link {
+    color: $first-color;
+  }
+  .nav_button {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: $radius;
+    padding: 0.3rem 1rem;
+    text-align: center;
+  }
+}
+//螢幕寬度大於1200px會執行的
+@media screen and (min-width: 1200px) {
+  .nav {
+    .nav_menu {
+      display: flex;
+    }
+
+    .nav_list {
+      display: flex;
+      a {
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        transition: all 0.4s ease;
+        &:hover {
+          background-color: rgba(78, 78, 78, 0.1);
+        }
+      }
+    }
+    .nav_toggle {
+      display: none;
+    }
+  }
+}
+
+// aside
+aside {
+  z-index: 6;
+  position: fixed;
+  background-color: white;
+  right: -310px;
+  width: 310px;
+  height: 100vh;
+  transition: all 0.4s ease;
+
+  button {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    background-color: transparent;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: rgb(78, 78, 78);
+    transition: all 0.4s ease;
+    width: 43px;
+    &:hover {
+      background-color: rgba(41, 41, 41, 0.1);
+      border-radius: 7px;
+    }
+  }
+  .aside_link {
+    padding-top: 70px;
+    a {
+      margin: 8px 40px;
+      padding: 8px 5px 8px 15px;
+      color: $first-color;
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.4s ease;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+.backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  z-index: 5;
+  transition: all 0.4s ease;
+}
+.backdrop.active {
+  display: block;
+  transition: all 0.4s ease;
+}
+aside.active {
+  right: 0;
+  transition: all 0.4s ease;
+  //   transform: translateY();
+}
+
+// main
+main {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory; //proximity比較不嚴格
+}
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100vh;
+
+  scroll-snap-align: start; //與瀏覽器的上邊框做對齊
+  scroll-snap-stop: always;
+  .car_model {
+    position: fixed;
+    top: calc(10vh + $header-height);
+    .car_model_title {
+      font-size: var(--h2-font-size);
+      font-weight: $font-medium;
+      text-align: center;
+    }
+    .car_model_paragraph {
+      font-size: var(--normal-font-size);
+      letter-spacing: 0.07rem;
+      text-underline-offset: 4px;
+      .car_model_link {
+        text-decoration: underline;
+        color: $first-color;
+      }
+    }
+  }
+  .home_button {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--normal-font-size);
+    font-weight: $font-medium;
+    position: fixed;
+    bottom: 10vh;
+    row-gap: 1rem;
+
+    @media screen and (min-width: 600px) {
+      flex-direction: row;
+      column-gap: 1.5rem;
+      width: 30rem;
+    }
+    @media screen and (min-width: 840px) {
+      width: 35rem;
+    }
+    .home_button_order {
+      position: relative;
+      width: 90vw;
+      height: 2.5rem;
+      border-radius: 0.2rem;
+      letter-spacing: 0.05rem;
+      background-color: $second-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      a {
+        color: white;
+      }
+    }
+    .home_button_exist {
+      width: 90vw;
+      height: 2.5rem;
+      border-radius: 0.2rem;
+      letter-spacing: 0.05rem;
+      background-color: $third-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      a {
+        color: black;
+      }
+    }
+  }
+}
+#model_s {
+  background-image: url(/img/Model-s.jpg);
+  background-position: center;
+  background-size: cover;
+}
+#model_y {
+  background-image: url(/img/Model-Y.jpg);
+  background-position: center;
+  background-size: cover;
+}
+#model_3 {
+  background-image: url(/img/Model-3.jpg);
+  background-position: center;
+  background-size: cover;
+}
+#model_x {
+  background-image: url(/img/Model-X.jpg);
+  background-position: center;
+  background-size: cover;
+}
+#solar_panels {
+  background-image: url(/img/SolarPanels.jpg);
+  background-position: center;
+  background-size: cover;
+}
+#solar_roof {
+  background-image: url(/img/solar-roof.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+//arrow
+// .home_button_order::after {
+//   content: "";
+//   position: absolute;
+//   border: solid black;
+//   border-width: 0 1.5px 1.5px 0;
+//   display: inline-block;
+//   padding: 5px;
+//   transform: rotate(45deg);
+//   -webkit-transform: rotate(45deg);
+//   bottom: -48px;
+//   right: -14px;
+// }
