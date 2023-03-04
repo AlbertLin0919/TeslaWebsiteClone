@@ -5,7 +5,7 @@ const link = document.querySelector(".car_model_link");
 const left_btn = document.querySelector(".home_button_order");
 const right_btn = document.querySelector(".home_button_exist");
 
-let page = new Page(sections, title, paragraph, link, left_btn, right_btn);
+let page = new Page(title, paragraph, link, left_btn, right_btn);
 createOberver(sections);
 
 function createOberver(elements) {
@@ -16,8 +16,9 @@ function createOberver(elements) {
   };
 
   //所有的變換都是透過IntersectionObserver這個API去實現
-  const observer = new IntersectionObserver(handleIntersect, options);
 
+  const observer = new IntersectionObserver(handleIntersect, options);
+  //如果有實現這個options的話，就會對每一個element去執行handleIntersect這個callback function
   elements.forEach((element) => {
     observer.observe(element);
   });
